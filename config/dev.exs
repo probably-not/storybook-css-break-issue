@@ -16,7 +16,8 @@ config :storybook_css_break_issue, StorybookCssBreakIssueWeb.Endpoint,
   secret_key_base: "43m+9fHtDz5Z4xiyK/mBBeB/j3IIzcFLmhiezpqUXjOnbej5cVxSryKt9s61TUmF",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
+    storybook_tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -47,7 +48,8 @@ config :storybook_css_break_issue, StorybookCssBreakIssueWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"lib/storybook_css_break_issue_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/storybook_css_break_issue_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"storybook/.*(exs)$"
     ]
   ]
 

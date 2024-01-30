@@ -6,6 +6,7 @@ const fs = require("fs")
 const path = require("path")
 
 module.exports = {
+  important: ".storybook-css-break-issue-web",
   content: [
     "./js/**/*.js",
     "../lib/storybook_css_break_issue_web.ex",

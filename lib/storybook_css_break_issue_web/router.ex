@@ -1,5 +1,6 @@
 defmodule StorybookCssBreakIssueWeb.Router do
   use StorybookCssBreakIssueWeb, :router
+  import PhoenixStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,8 +15,13 @@ defmodule StorybookCssBreakIssueWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    storybook_assets()
+  end
+
   scope "/", StorybookCssBreakIssueWeb do
     pipe_through :browser
+    live_storybook("/storybook", backend_module: Elixir.StorybookCssBreakIssueWeb.Storybook)
 
     get "/", PageController, :home
   end
